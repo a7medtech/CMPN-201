@@ -1,0 +1,42 @@
+< THE SYMBOL TABLE >  DeathFromAbove.exe  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+SHIFTINGCHARACTER        	00000     	-1        	NEAR      	(NOSEG)   
+VALIDATE                 	0000A     	-1        	LABEL     	(NOSEG)   
+CAND                     	0001C     	-1        	LABEL     	(NOSEG)   
+CANI                     	00023     	-1        	LABEL     	(NOSEG)   
+AFTER                    	00028     	-1        	LABEL     	(NOSEG)   
+NORMAL                   	0002F     	-1        	LABEL     	(NOSEG)   
+MOVELEFT                 	00044     	-1        	LABEL     	(NOSEG)   
+DRAWDELAYL               	00048     	-1        	LABEL     	(NOSEG)   
+LOOPX1                   	0004F     	-1        	LABEL     	(NOSEG)   
+MOVERIGHT                	0006B     	-1        	LABEL     	(NOSEG)   
+DRAWDELAYR               	0006F     	-1        	LABEL     	(NOSEG)   
+LOOPX2                   	00076     	-1        	LABEL     	(NOSEG)   
+CONS                     	0008C     	-1        	LABEL     	(NOSEG)   
+CHECK                    	00090     	-1        	LABEL     	(NOSEG)   
+ROTATERIGHT              	000A2     	-1        	NEAR      	(NOSEG)   
+STOP                     	000E0     	-1        	LABEL     	(NOSEG)   
+ROTATELEFT               	000E1     	-1        	NEAR      	(NOSEG)   
+STOP2                    	0011C     	-1        	LABEL     	(NOSEG)   
+RETURNIDLE               	0011D     	-1        	NEAR      	(NOSEG)   
+DELAY                    	00120     	-1        	LABEL     	(NOSEG)   
+RETURNLEFT               	0013D     	-1        	LABEL     	(NOSEG)   
+RETURNRIGHT              	00142     	-1        	LABEL     	(NOSEG)   
+FINISH                   	00145     	-1        	LABEL     	(NOSEG)   
+DRAWCHARACTER            	00146     	-1        	NEAR      	(NOSEG)   
+DRAW                     	0014F     	-1        	LABEL     	(NOSEG)   
+STACK                    	00017     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	0001B     	-5        	SEGMENT   	(ITSELF)  
+CHARX                    	00000     	2         	VAR       	data      
+CHARY                    	0000A     	2         	VAR       	data      
+SHIFTINGFEED             	00014     	2         	VAR       	data      
+SHIFTINGSTEP             	00016     	2         	VAR       	data      
+CODE                     	0001D     	-5        	SEGMENT   	(ITSELF)  
+MAIN                     	00000     	-1        	FAR       	code      
+MAINLOOP                 	0000B     	-1        	LABEL     	code      
+===================================================================================================
+[ 11/25/2017  --  12:01:17 PM ] 
+< END >
+ 
