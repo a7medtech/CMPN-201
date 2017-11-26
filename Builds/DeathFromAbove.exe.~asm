@@ -1,7 +1,3 @@
-include ShiftingCharacter.inc
-
-
-
 
 
 ;---------------------------------------------------------------------------------------------------------------------------------------------
@@ -9,10 +5,8 @@ include ShiftingCharacter.inc
 .stack 64
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 .data
-charx   dw  35, 45, 50,55,65  ;RUx, RFx, COMx, LFx, LUx
-charY   dw  30, 60, 50, 60,30 ;RUy, RFy, COMy, LFy, LUy
-shiftingFeed dw 20
-shiftingStep dw 10
+charx   dw  35,45,50,55,65  ;RUx, RFx, COMx, LFx, LUx
+charY   dw  30,60,50,60,30 ;RUy, RFy, COMy, LFy, LUy
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 .code
 main    proc far
@@ -22,9 +16,54 @@ mov ah, 0
 mov al, 13h
 int 10h
 
+;R = 30
+;X 10 -> 40
+;Y = sqrt(R2 - X2)
+mov al, 30
+mov bl, al
+mul bl
+mov bx, ax ;bx = R2
+mov dl, 0 ;cx = X
+
+
+HCLoop:
+mov al, dl
+mul dl     ;ax = X2
+
+push bx
+sub bx, ax
+mov dx, bx
+call sqrt   ;bl = Y
+
+
+mov cl, bl
+mov dh,0
+mov ch,0
+;-----------------------------
+;Draw Pixel
+;-----------------------------
+add dl, 40
+mov al,5 ;Pixel color
+mov ah,0ch ;Draw Pixel Command
+int 10h
+
+sub dl, 40
+
+
+
+inc dl
+cmp dl, 100
+pop bx
+jne HCLoop
+
+
+
+
+
+
 MainLoop:
 
-call ShiftingCharacter       ;Evaluates user inputs and shifts the character with advanced mechanisms
+
 
 jmp MainLoop
 
@@ -37,9 +76,40 @@ main        endp
 
 
 
+
+
+
+sqrt proc
+;bl = sqrt(dx)
+push cx
+mov ax, 0
+mov bl, 0
+mov cx, 0
+
+
+LOOP1:
+mov al, bl
+mul bl        ; C = B*B       CX = C, bl=B
+mov cx, ax
+
+cmp cx, dx      ; Compare C to A
+jg fin            ; If C > A Branch to the end
+
+ADD bl, 1        ; B = B + 1
+
+jmp LOOP1        ; Go back to the beginning of the loop
+fin:
+sub bl , 1        ; B = B-1
+pop cx
+
+ret
+
+endp sqrt
+
+
+
 end         main
 
 
 
-
-; [SOURCE]: C:\Users\Xyntechs\Desktop\Death From Above\DeathFromAbove.asm
+; [SOURCE]: C:\Users\Xyntechs\Desktop\HC.asm
